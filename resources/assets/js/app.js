@@ -9,14 +9,51 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueAxios from 'vue-axios';
+Vue.use(VueRouter);
+Vue.use(VueAxios,axios);
+
+// import '../css/admin/css/sb-admin.css';
+import App from './components/Head.vue';
+import Main from './components/Main.vue';
+import Test from './components/Test.vue';
+
+import BootstrapVue from 'bootstrap-vue';
+Vue.use(BootstrapVue);
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+
+const routes = [
+{
+	name: 'Home',
+	path: '/',
+	component: Main
+
+},
+{
+	name: 'Test',
+	path: '/test',
+	component: Test
+
+}
+
+];
+
+const router = new VueRouter({ mode:'history',routes:routes});
+new Vue(Vue.util.extend({ router },App)).$mount('#app');
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+// const app = new Vue({
+//     el: '#app'
+// });

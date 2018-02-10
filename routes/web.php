@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+
+// Route::resource('/items','ItemControler');
+Route::get('{path}', function () {
     return view('welcome');
-});
+})->where( 'path', '([A-z\d-\/_.]+)?' );
