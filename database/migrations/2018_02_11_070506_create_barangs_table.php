@@ -13,8 +13,23 @@ class CreateBarangsTable extends Migration
      */
     public function up()
     {
+
+
+// Barang
+// kode barang auto
+// nama
+// spesifikasi
+// lokasi
+// kategori
+// jumlah barang
         Schema::create('barangs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('kode_barang');
+            $table->string('nama');
+            $table->string('spesifikasi');
+            $table->string('lokasi');
+            $table->string('kategori');
+            $table->integer('jumlah');
+
             $table->timestamps();
         });
     }

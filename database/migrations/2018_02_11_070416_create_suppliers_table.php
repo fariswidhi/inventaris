@@ -4,17 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePinjamBarangsTable extends Migration
+class CreateSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
+    // kode supplier auto
+// nama suplier 
+// alamat
+
     public function up()
     {
-        Schema::create('pinjam_barangs', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nama');
+            $table->text('alamat');
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreatePinjamBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinjam_barangs');
+        Schema::dropIfExists('suppliers');
     }
 }

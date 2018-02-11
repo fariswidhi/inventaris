@@ -4,22 +4,28 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSuppliersTable extends Migration
+class CreateTransaksiMasuksTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
+    // Transaksi Masuk Barang
+// kode 
+// id barang
+// tanggal masuk
+// jumlah masuk
+// suplier 
+
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('transaksi_masuks', function (Blueprint $table) {
             $table->string('kode');
-            $table->string('nama');
-            $table->text('alamat');
-            $table->string('telepon');
-            $table->string('kota');
+            $table->string('kode_barang');
+            $table->integer('jumlah_masuk');
+            $table->integer('supplier');
             $table->timestamps();
         });
     }
@@ -31,6 +37,6 @@ class CreateSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('transaksi_masuks');
     }
 }

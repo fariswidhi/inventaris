@@ -4,20 +4,28 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasukBarangsTable extends Migration
+class CreateTransaksiKeluarsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
+// Transaksi Keluar barang
+// kode 
+// id barang
+// jumlah keluar
+// tanggal keluar
+// keperluan
     public function up()
     {
-        Schema::create('masuk_barangs', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('transaksi_keluars', function (Blueprint $table) {
+            $table->string('kode');
             $table->string('kode_barang');
-            // $table->
-
+            $table->integer('jumlah_keluar');
+            $table->string('tanggal_keluar');
+            $table->text('keperluan');
             $table->timestamps();
         });
     }
@@ -29,6 +37,6 @@ class CreateMasukBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('masuk_barangs');
+        Schema::dropIfExists('transaksi_keluars');
     }
 }
