@@ -19,6 +19,7 @@ Vue.use(VueAxios,axios);
 import App from './components/Head.vue';
 import Main from './components/Main.vue';
 import Test from './components/Test.vue';
+import Barang from './components/barang/index.vue';
 
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
@@ -45,7 +46,12 @@ const routes = [
 	name: 'Test',
 	path: '/test',
 	component: Test
+},
 
+{
+	name: 'barang',
+	path: '/barang/view',
+	component: Barang
 }
 
 ];

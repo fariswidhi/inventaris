@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Barang extends Model
 {
     //
+    protected $primaryKey = 'kode_barang';
+    // protected $fillable = ['kode_barang'];
+ 	public $incrementing = false;   
 }
