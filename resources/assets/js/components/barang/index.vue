@@ -211,11 +211,15 @@ export default {
   		var barang = this.barang;
   		this.axios.post(uri,barang).then((response)=>{
   			this.$router.push({name:'barang'});
-  			   this.$refs.myEditModal.hide();
+  			   this.$refs.myModalRef.hide();
   			   this.fetch();
   			   this.clear();
 
-  		});
+  		})
+  		.catch((r)=>{
+  			console.log(r);
+  		})
+  		;
 
   },
   updateForm(id){
