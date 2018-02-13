@@ -5,44 +5,33 @@
   <form v-on:submit.prevent="save()" class="form-horizontal" >
 
                       <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Kode Barang</label>
+                        <label for="name" class="col-md-12 control-label" >Nama</label>
                         <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Kode Barang" v-model="barang.kode_barang"/>
+                          <input type="text" class="form-control" required="" placeholder="Nama" v-model="user.name"/>
 
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Nama Barang</label>
+                        <label for="name" class="col-md-12 control-label" >Email</label>
                         <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Nama Barang" v-model="barang.nama"/>
+                          <input type="text" class="form-control" required="" placeholder="Email" v-model="user.email"/>
 
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Spesifikasi</label>
+                        <label for="name" class="col-md-12 control-label" >Password</label>
                         <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Spesifikasi Barang" v-model="barang.spesifikasi"/>
+                          <input type="password" class="form-control" required="" placeholder="Password" v-model="user.password"/>
 
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Lokasi</label>
+                        <label for="name" class="col-md-12 control-label" >Level</label>
                         <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Lokasi" v-model="barang.lokasi"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Kategori Barang</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Kategori Barang" v-model="barang.kategori"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Jumlah Barang</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Jumlah Barang" v-model="barang.jumlah"/>
+                          <select class="form-control" v-model="user.level">
+                              <option value="1">Admin</option>
+                              <option value="2">Petugas</option>
+                          </select>
 
                         </div>
                       </div>
@@ -60,15 +49,15 @@
   export default{
     data(){
       return {
-        barang:{}
+        user:{}
       }
     },
     methods:{
       save(){
         let uri = 'http://localhost:8000/users';
-        var barang = this.barang;
-        this.axios.post(uri,barang).then((response)=>{
-          this.$router.push({'name':'Barang'});
+        var user = this.user;
+        this.axios.post(uri,user).then((response)=>{
+          this.$router.push({'name':'User'});
 
         })
       }

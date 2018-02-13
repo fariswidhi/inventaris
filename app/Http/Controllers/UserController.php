@@ -37,7 +37,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        print_r($request->all());
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password= bcrypt($request->password);
+        $user->level = $request->level;
+        $user->save();
         
     }
 
@@ -61,6 +66,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+       return User::find($id) ;
     }
 
     /**
@@ -73,6 +79,21 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password= bcrypt($request->password);
+        $user->level = $request->level;
+        $update = $user->save();
+        if ($update) {
+            return response(200);
+        }
+        else{
+            return response(500);
+        }
+
     }
 
     /**
@@ -84,5 +105,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+        $delete = $user->delete();
+        if ($delete) {
+            return response(200);
+        }
+        else{
+                        return response(500);
+        }
     }
 }
