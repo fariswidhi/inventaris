@@ -65,7 +65,7 @@ const routes = [
 
 {
 	name: 'EditBarang',
-	path: '/barang/edit',
+	path: '/barang/edit/:id',
 	component: EditBarang
 }
 

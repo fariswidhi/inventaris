@@ -85,7 +85,7 @@
                         <td>{{ item.nama}}</td>
                         <td>
 
-                       	  <b-btn @click="click('edit',item.kode_barang)">Edit</b-btn>
+                       	  <b-btn :to="{name:'EditBarang',params:{id:item.kode_barang}}"> Edit</b-btn>
 	  	<b-btn @click="remove(item.kode_barang)">Hapus</b-btn>
 
                         </td>

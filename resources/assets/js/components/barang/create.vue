@@ -1,7 +1,7 @@
 <template>
   <div>
     
-  <h1>Tambah Barangs</h1>
+  <h1>Tambah Barang</h1>
   <form v-on:submit.prevent="save()" class="form-horizontal" >
 
                       <div class="form-group">
