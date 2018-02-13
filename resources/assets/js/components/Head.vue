@@ -20,7 +20,11 @@
 
     <b-navbar-nav>
       <b-nav-item :to="{name: 'Barang'}">Barang</b-nav-item>
+
       <b-nav-item :to="{name: 'User'}">User</b-nav-item>
+
+      <b-nav-item :to="{name: 'CreateTransaksiMasuk'}">Transaksi Masuk</b-nav-item>
+
 
     </b-navbar-nav>
 
@@ -49,11 +53,6 @@
 </router-view>
 </b-card>
 </div>
-
-
-  <b-modal id="myModal" title="Konfirmasi"  ref="confirmModal"     @ok="forceRemove(barang.kode_barang)" >
-	Yakin Menghapus Data ini?
-  </b-modal>
 
 
 </div>

@@ -12,6 +12,8 @@ import CreateUser from './components/user/create.vue';
 import EditUser from './components/user/edit.vue';
 
 
+import CreateTransaksiMasuk from './components/transaksi-masuk/create';
+
 const route = [
 {
 	name: 'Home',
@@ -58,6 +60,12 @@ const route = [
 	name: 'EditUser',
 	path: '/user/edit/:id',
 	component: EditUser
+
+},
+{
+	name: 'CreateTransaksiMasuk',
+	path: '/transaksi-masuk',
+	component: CreateTransaksiMasuk
 
 }
 

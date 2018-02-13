@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Barang;
-
-
+use App\TransaksiBarangSementara as BarangSementara;
+use Auth;
 // Barang
 // kode barang auto
 // nama
@@ -128,4 +128,41 @@ class BarangController extends Controller
 
 
     }
+
+    public function saveBarangSementara(Request $request){
+        $id = $request->id;
+        $barang = new BarangSementara;
+        $barang->kode_barang = $id;
+        $barang->user = Auth::id();
+        $barang->status=0;
+        $save = $barang->save();
+        if ($save) {
+            return response(200);
+        }
+        else{
+            return response(500);
+        }
+    }
+    public function deleteBarangSementara(Request $request){
+        $id = $request->id;
+        $barang = BarangSementara::find($id);
+        $delete = $barang->delete();
+        if ($delete) {
+            return response(200);
+        }
+        else{
+            return response(500);
+        }
+    }
+
+    public function barangSementara(){
+        $data = BarangSementara::where(['user'=>Auth::id(),'status'=>0])->get();
+        return response($data);
+
+        // echo json_encode($data);
+
+    }
+
 }
+
+
