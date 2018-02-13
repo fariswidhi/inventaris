@@ -49,6 +49,13 @@
 </router-view>
 </b-card>
 </div>
+
+
+  <b-modal id="myModal" title="Konfirmasi"  ref="confirmModal"     @ok="forceRemove(barang.kode_barang)" >
+	Yakin Menghapus Data ini?
+  </b-modal>
+
+
 </div>
 </template>
 

@@ -27,13 +27,18 @@
                         <td>
 
                           <b-btn :to="{name:'EditUser',params:{id:item.id}}"> Edit</b-btn>
-                    <b-btn @click="remove(item.kode_barang)">Hapus</b-btn>
+                    <b-btn @click="remove(item.id)">Hapus</b-btn>
 
                         </td>
                       </tr>
                     </tbody>
                     </table>
 
+
+
+  <b-modal id="myModal" title="Konfirmasi"  ref="confirmModal"     @ok="forceRemove(item.id)" >
+  Yakin Menghapus Data ini?
+  </b-modal>
 
 
   </div>
@@ -104,19 +109,22 @@ export default {
 
   },
   remove(id){
-          let uri = "http://localhost:8000/barang/"+id+"/edit";
+    // console.log(id);
+          let uri = "http://localhost:8000/users/"+id+"/edit";
       this.axios.get(uri).then((response)=>{
-        this.barang =response.data;
-        // console.log("as");
+        this.item  = response.data;
+        // console.log(this.item);
 
               this.$refs.confirmModal.show();
 
 
       })
 
+              // this.$refs.confirmModal.show();
+
   },
   forceRemove(id){
-          let uri = "http://localhost:8000/barang/"+id;
+          let uri = "http://localhost:8000/users/"+id;
           this.axios.delete(uri);
           this.fetch();
 
