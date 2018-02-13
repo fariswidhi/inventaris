@@ -21,7 +21,7 @@
     <b-navbar-nav>
       <b-nav-item to="test">Link</b-nav-item>
 
-      <b-nav-item to="barang/view">Barang</b-nav-item>
+      <b-nav-item :to="{name: 'Barang'}">Barang</b-nav-item>
 
     </b-navbar-nav>
 

@@ -19,7 +19,10 @@ Vue.use(VueAxios,axios);
 import App from './components/Head.vue';
 import Main from './components/Main.vue';
 import Test from './components/Test.vue';
+
 import Barang from './components/barang/index.vue';
+import CreateBarang from './components/barang/create.vue';
+import EditBarang from './components/barang/edit.vue';
 
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
@@ -49,14 +52,32 @@ const routes = [
 },
 
 {
-	name: 'barang',
+	name: 'Barang',
 	path: '/barang/view',
 	component: Barang
+},
+
+{
+	name: 'CreateBarang',
+	path: '/barang/create',
+	component: CreateBarang
+},
+
+{
+	name: 'EditBarang',
+	path: '/barang/edit',
+	component: EditBarang
 }
 
 ];
 
-const router = new VueRouter({ mode:'history',routes:routes});
+const router = new VueRouter(
+	{ 	
+		base: '/',
+		mode:'history',
+		routes:routes
+	}
+	);
 new Vue(Vue.util.extend({ router },App)).$mount('#app');
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 

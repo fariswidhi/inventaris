@@ -3,69 +3,14 @@
 		
 	<h1>Barang</h1>
 <div class="pull-left">
-	  <b-btn @click="click('new',0)">Tambah</b-btn>
+	  <b-btn :to="{name:'CreateBarang'}">Tambah</b-btn>
 	
 </div>
   <b-modal id="myModal" title="Konfirmasi"  ref="confirmModal"     @ok="forceRemove(barang.kode_barang)" >
 	Yakin Menghapus Data ini?
   </b-modal>
 
-  <b-modal id="myModal" title="Tambah Barang" hide-footer="true"	 ref="myModalRef" >
-                    <form v-on:submit.prevent="saveForm()" class="form-horizontal" >
 
-                      <div class="form-group">
-                      
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Kode Barang</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Kode Barang" v-model="barang.kode_barang"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Nama Barang</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Nama Barang" v-model="barang.nama"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Spesifikasi</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Spesifikasi Barang" v-model="barang.spesifikasi"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Lokasi</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Lokasi" v-model="barang.lokasi"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Kategori Barang</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Kategori Barang" v-model="barang.kategori"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="name" class="col-md-12 control-label" >Jumlah Barang</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" required="" placeholder="Jumlah Barang" v-model="barang.jumlah"/>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="col-md-4 col-md-offset-2">
-                          <button class="btn btn-primary" type="submit">Submit</button>
-                        </div>
-                      </div>
-                    </form>
-
-  </b-modal>
 
 
 
@@ -182,8 +127,9 @@ export default {
   		}
   	},
   	newForm(){
-  		this.clear();
+
   		 this.$refs.myModalRef.show();
+  		 this.clear();
   	},
   	clear(){
   		this.barang = '';
@@ -209,17 +155,18 @@ export default {
   saveForm(){
       let uri = "http://localhost:8000/barang";
   		var barang = this.barang;
-  		this.axios.post(uri,barang).then((response)=>{
-  			this.$router.push({name:'barang'});
-  			   this.$refs.myModalRef.hide();
-  			   this.fetch();
-  			   this.clear();
+  		// this.axios.post(uri,barang).then((response)=>{
+  		// 	this.$router.push({name:'barang'});
+  		// 	   this.$refs.myModalRef.hide();
+  		// 	   this.fetch();
+  		// 	   this.clear();
 
-  		})
-  		.catch((r)=>{
-  			console.log(r);
-  		})
-  		;
+  		// })
+  		// .catch((r)=>{
+  		// 	console.log(r);
+  		// })
+  		// ;
+  		console.log(barang);
 
   },
   updateForm(id){
