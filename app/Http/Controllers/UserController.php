@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Barang;
+use App\User;
 
 class UserController extends Controller
 {
@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        return Barang::all();
+        return User::all();
     }
 
     /**
@@ -37,6 +37,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        print_r($request->all());
         
     }
 
