@@ -173,7 +173,7 @@ export default {
       let uri = "http://localhost:8000/barang/"+id;
   		var barang = this.barang;
   		this.axios.patch(uri,barang).then((response)=>{
-  			this.$router.push({name:'barang'});
+  			this.$router.push({name:'Barang'});
   			   this.$refs.myEditModal.hide();
   			   this.fetch();
   			   this.clear();
