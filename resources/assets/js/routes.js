@@ -12,6 +12,12 @@ import CreateUser from './components/user/create.vue';
 import EditUser from './components/user/edit.vue';
 
 
+
+import Supplier from './components/supplier/index.vue';
+import CreateSupplier from './components/supplier/create.vue';
+import EditSupplier from './components/supplier/edit.vue';
+
+
 import CreateTransaksiMasuk from './components/transaksi-masuk/create';
 
 const route = [
@@ -60,6 +66,24 @@ const route = [
 	name: 'EditUser',
 	path: '/user/edit/:id',
 	component: EditUser
+
+},
+{
+	name: 'Supplier',
+	path: '/supplier/view',
+	component: Supplier
+
+},
+{
+	name: 'CreateSupplier',
+	path: '/supplier/create',
+	component: CreateSupplier
+
+},
+{
+	name: 'EditSupplier',
+	path: '/supplier/edit/:id',
+	component: EditSupplier
 
 },
 {

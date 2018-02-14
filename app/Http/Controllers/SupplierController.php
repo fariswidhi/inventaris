@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Supplier;
 
 class SupplierController extends Controller
 {
@@ -14,6 +15,7 @@ class SupplierController extends Controller
     public function index()
     {
         //
+        return Supplier::all();
     }
 
     /**
@@ -35,6 +37,19 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         //
+        $supplier = new Supplier;
+        $supplier->nama =  $request->nama;
+        $supplier->alamat =  $request->alamat;
+        $save = $supplier->save();
+
+        if ($save) {
+            # code...
+            return response(200);
+        }
+        else{
+            return response(500);
+
+        }
     }
 
     /**
@@ -57,6 +72,8 @@ class SupplierController extends Controller
     public function edit($id)
     {
         //
+        $supplier = Supplier::find($id);
+        return $supplier;
     }
 
     /**
@@ -69,6 +86,20 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $supplier = Supplier::find($id);
+        $supplier->nama =  $request->nama;
+        $supplier->alamat =  $request->alamat;
+        $update = $supplier->update();
+
+        if ($update) {
+            # code...
+            return response(200);
+        }
+        else{
+            return response(500);
+
+        }
+
     }
 
     /**
@@ -80,5 +111,16 @@ class SupplierController extends Controller
     public function destroy($id)
     {
         //
+        $delete = Supplier::find($id)->delete();
+
+        if ($delete) {
+            # code...
+            return response(200);
+        }
+        else{
+            return response(500);
+
+        }
+
     }
 }

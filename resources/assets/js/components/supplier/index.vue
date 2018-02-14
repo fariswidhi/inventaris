@@ -1,12 +1,12 @@
 <template>
 	<div>
 		
-	<h1>Barang</h1>
+	<h1>Supplier</h1>
 <div class="pull-left">
-	  <b-btn :to="{name:'CreateBarang'}">Tambah</b-btn>
+	  <b-btn :to="{name:'CreateSupplier'}">Tambah</b-btn>
 	
 </div>
-  <b-modal id="myModal" title="Konfirmasi"  ref="confirmModal"     @ok="forceRemove(barang.kode_barang)" >
+  <b-modal id="myModal" title="Konfirmasi"  ref="confirmModal"     @ok="forceRemove(barang.id)" >
 	Yakin Menghapus Data ini?
   </b-modal>
 
@@ -19,18 +19,18 @@
 
                     <table class="table table-bordered" >
                     <thead>
-                        <th>Kode Barang</th>
-                        <th>Nama Barang</th>
+                        <th>Nama Supplier</th>
+                        <th>Alamat Supplier</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody >
                       <tr v-for="item in items">
-                        <td>{{ item.kode_barang}}</td>
                         <td>{{ item.nama}}</td>
+                        <td>{{ item.alamat}}</td>
                         <td>
 
-                       	  <b-btn :to="{name:'EditBarang',params:{id:item.kode_barang}}"> Edit</b-btn>
-	  	<b-btn @click="remove(item.kode_barang)">Hapus</b-btn>
+                       	  <b-btn :to="{name:'EditSupplier',params:{id:item.id}}"> Edit</b-btn>
+	  	<b-btn @click="remove(item.id)">Hapus</b-btn>
 
                         </td>
                       </tr>
@@ -70,14 +70,6 @@ export default {
   			this.newForm();
   		}
   	},
-  	newForm(){
-
-  		 this.$refs.myModalRef.show();
-  		 this.clear();
-  	},
-  	clear(){
-  		this.barang = '';
-  	},
   	getData(id){
       let uri = "http://localhost:8000/barang/"+id+"/edit";
       this.axios.get(uri).then((response)=>{
@@ -89,7 +81,7 @@ export default {
       })
   	},
     fetch(){
-      let uri = "http://localhost:8000/barang";
+      let uri = "http://localhost:8000/supplier";
       this.axios.get(uri).then((response)=>{
         this.items = response.data;
 
@@ -126,7 +118,7 @@ export default {
 
   },
   remove(id){
-  	      let uri = "http://localhost:8000/barang/"+id+"/edit";
+  	      let uri = "http://localhost:8000/supplier/"+id+"/edit";
       this.axios.get(uri).then((response)=>{
       	this.barang =response.data;
       	// console.log("as");
@@ -138,7 +130,7 @@ export default {
 
   },
   forceRemove(id){
-  	      let uri = "http://localhost:8000/barang/"+id;
+  	      let uri = "http://localhost:8000/supplier/"+id;
   	      this.axios.delete(uri);
   	      this.fetch();
 

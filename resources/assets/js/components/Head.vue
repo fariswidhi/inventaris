@@ -19,6 +19,9 @@
   <b-collapse is-nav id="nav_collapse">
 
     <b-navbar-nav>
+
+      <b-nav-item :to="{name: 'Supplier'}">Supplier</b-nav-item>
+
       <b-nav-item :to="{name: 'Barang'}">Barang</b-nav-item>
 
       <b-nav-item :to="{name: 'User'}">User</b-nav-item>

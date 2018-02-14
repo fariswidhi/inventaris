@@ -3,23 +3,35 @@
     
   <h1>Tambah Transaksi Masuk Barang</h1>
   
-    <form v-on:submit.prevent="save()" class="form-horizontal" >
+    <form v-on:submit.prevent="saveTransact()" class="form-horizontal" >
 
                       <div class="form-group">
                         <label for="name" class="col-md-12 control-label" >Kode Transaksi</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control"  placeholder="Nama" v-model="user.name"/>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control"  placeholder="Nama" v-model="transact.code"/>
+
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="name" class="col-md-12 control-label" >Supplier</label>
+                        <div class="col-md-4">
+                        <select class="form-control"  v-model="transact.supplier">
+                          <option>Pilih Supplier</option>
+                          <option v-for="supplier in suppliers" :value="supplier.id">{{ supplier.nama }}</option>
+                        </select>
 
                         </div>
                       </div>
 
   <div class="form-group">
   <div class="col-md-12">
+  <h5>Daftar Barang</h5>
       <b-btn @click="showModal">Tambah Barang</b-btn>
 
       <br>
       <br>
-    <div class="col-md-5">
+    <div class="col-md-8">
       
                       <table class="table table-hover">
                       <thead>
@@ -28,10 +40,10 @@
                         <th>Aksi</th>
                       </thead>
                           <tbody>
-                            <tr v-for="item in b">
+                            <tr v-for="(item,j) in b">
                               <td>{{item.kode_barang}}</td>
-                              <td><input type="text" class="form-control" name=""></td>
-                              <td><button @click="deleteBarang(item.id)" class="btn btn-danger">Hapus</button></td>
+                              <td><input type="text" class="form-control" v-model="form.parent[j]" ></td>
+                              <td><button type="button" @click="deleteBarang(item.id)" class="btn btn-danger">Hapus</button></td>
                             </tr>
                           </tbody>
                       </table>
@@ -53,7 +65,7 @@
                       </div>
                     </form>
 
-  <b-modal id="modal1" title="Tambah Barang" ref="myModalRef"  size="lg" hide-footer="true">
+  <b-modal id="modal1" title="Tambah Barang" ref="myModalRef"  size="lg" >
 
 
                     <table class="table table-bordered" >
@@ -93,14 +105,33 @@
         barang:{},
         user: {},
         items:{},
-        form: {},
-        b:{}
+        form: {
+          parent:[]
+        },
+        b:{},
+        barang:{},
+        suppliers:{},
+        transact: {},
+        bar:[]
       }
     },
     created(){
       this.fetchBarangSementara();
+      this.supplier();
+    },
+    mounted(){
+      // app = this;
+
     },
     methods:{
+      saveTransact(){
+        var transacts = this.form;
+        var uri = "http://localhost:8000/transaksi/barang-masuk";
+
+        this.axios.post(uri,transacts).then((response)=>{
+
+        });
+      },
 
     fetchBarangSementara(){
       let uri = "http://localhost:8000/barang-sementara";
@@ -109,6 +140,15 @@
       })
 
     },
+
+      supplier() {
+      let uri = "http://localhost:8000/supplier";        
+      this.axios.get(uri).then((response)=>{
+        this.suppliers = response.data
+      });
+      // console.log("as");
+      },
+
     showModal () {
       this.$refs.myModalRef.show()
             let uri = "http://localhost:8000/barang";
@@ -120,7 +160,7 @@
     saveBarang(id){
     let uri = "http://localhost:8000/save-barang/";
     var barang = id;
-    this.axios.post(uri,{id:barang}).then((response)=>{
+    this.axios.post(uri,{id:barang,type:1}).then((response)=>{
       this.fetchBarangSementara();
             this.$refs.myModalRef.hide()
     });
@@ -136,6 +176,7 @@
         })
       },
       deleteBarang(id){
+
         let uri = 'http://localhost:8000/delete-barang/';
 
         this.axios.post(uri,{id:id}).then((response)=>{

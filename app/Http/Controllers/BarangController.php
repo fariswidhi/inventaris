@@ -134,6 +134,7 @@ class BarangController extends Controller
         $barang = new BarangSementara;
         $barang->kode_barang = $id;
         $barang->user = Auth::id();
+        $barang->type = $request->type;
         $barang->status=0;
         $save = $barang->save();
         if ($save) {
