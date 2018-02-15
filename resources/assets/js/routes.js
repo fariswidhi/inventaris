@@ -18,7 +18,9 @@ import CreateSupplier from './components/supplier/create.vue';
 import EditSupplier from './components/supplier/edit.vue';
 
 
-import CreateTransaksiMasuk from './components/transaksi-masuk/create';
+import CreateTransaksiMasuk from './components/transaksi-masuk/create.vue';
+import TransaksiMasuk from './components/transaksi-masuk/index.vue';
+import DetailTransaksiMasuk from './components/transaksi-masuk/detail.vue';
 
 const route = [
 {
@@ -88,10 +90,21 @@ const route = [
 },
 {
 	name: 'CreateTransaksiMasuk',
-	path: '/transaksi-masuk',
+	path: '/transaksi-masuk/create',
 	component: CreateTransaksiMasuk
 
+},
+{
+	name: 'TransaksiMasuk',
+	path: '/transaksi-masuk',
+	component: TransaksiMasuk
+},
+{
+	name: 'DetailTransaksiMasuk',
+	path: '/transaksi-masuk/:id',
+	component: DetailTransaksiMasuk
 }
+
 
 ];
 

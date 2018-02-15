@@ -29,7 +29,7 @@
                         <td>{{ item.alamat}}</td>
                         <td>
 
-                       	  <b-btn :to="{name:'EditSupplier',params:{id:item.id}}"> Edit</b-btn>
+      <b-btn :to="{name:'EditSupplier',params:{id:item.id}}"> Edit</b-btn>
 	  	<b-btn @click="remove(item.id)">Hapus</b-btn>
 
                         </td>

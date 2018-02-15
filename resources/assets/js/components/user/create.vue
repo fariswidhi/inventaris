@@ -58,7 +58,6 @@
         var user = this.user;
         this.axios.post(uri,user).then((response)=>{
           this.$router.push({'name':'User'});
-
         })
       }
     }

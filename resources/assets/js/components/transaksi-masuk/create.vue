@@ -8,7 +8,7 @@
                       <div class="form-group">
                         <label for="name" class="col-md-12 control-label" >Kode Transaksi</label>
                         <div class="col-md-4">
-                          <input type="text" class="form-control"  placeholder="Nama" v-model="transact.code"/>
+                          <input type="text" class="form-control"  placeholder="Nama" v-model="transact.kode"/>
 
                         </div>
                       </div>
@@ -60,7 +60,7 @@
 
 
 
-                          <button class="btn btn-primary" type="submit">Submit</button>
+                          <button class="btn btn-primary" type="submit">Simpan </button>
                         </div>
                       </div>
                     </form>
@@ -125,10 +125,12 @@
     },
     methods:{
       saveTransact(){
-        var transacts = this.form;
+        var transacts = this.transact;
+        var form = this.form;
         var uri = "http://localhost:8000/transaksi/barang-masuk";
-
-        this.axios.post(uri,transacts).then((response)=>{
+        // console.log(transacts);
+        this.axios.post(uri,{"jumlah":form,"data":transacts}).then((response)=>{
+           this.$router.push({'name':'TransaksiMasuk'});
 
         });
       },

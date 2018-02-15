@@ -67,7 +67,7 @@
     	var id = this.$route.params.id;
     	let uri  = 'http://localhost:8000/barang/'+id+"/edit";
     	this.axios.get(uri).then((response)=>{
-    		this.barang = response.data;
+    		this.barang = responsoe.data;
     	});
     },
     methods:{

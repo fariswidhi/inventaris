@@ -27,7 +27,7 @@ Auth::routes();
 Route::get('/barang/view','BarangController@index');
 
 Route::resource('/barang','BarangController');
-Route::resource('/supplier','SupplierController');
+Route::resource('/supplier',	'SupplierController');
 Route::get('/barang/view','BarangController@index');
 
 Route::post('/save-barang','BarangController@saveBarangSementara');
@@ -35,7 +35,7 @@ Route::post('/delete-barang','BarangController@deleteBarangSementara');
 Route::get('/barang-sementara/','BarangController@barangSementara');
 
 Route::post('/transaksi/barang-masuk','TransactController@saveTransaksiBarangMasuk');
-
+Route::get('transaksi/barang-masuk/all','TransactController@TransaksiMasuk');
 Route::resource('/users','UserController');
 
 // Route::get('{path}', function () {

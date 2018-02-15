@@ -26,7 +26,7 @@
 
       <b-nav-item :to="{name: 'User'}">User</b-nav-item>
 
-      <b-nav-item :to="{name: 'CreateTransaksiMasuk'}">Transaksi Masuk</b-nav-item>
+      <b-nav-item :to="{name: 'TransaksiMasuk'}">Transaksi Masuk</b-nav-item>
 
 
     </b-navbar-nav>
